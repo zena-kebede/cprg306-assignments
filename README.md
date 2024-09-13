@@ -32,14 +32,23 @@ npm start
 
 Usage:
 
-Show how to use your project, with code examples or screenshots.
-Contributing:
+To get hairstyle recommendations:
 
-If you're open to contributions, explain how others can contribute.
-Link to a CONTRIBUTING.md file if you have one.
+Create a user profile by entering your hair type and face shape.
+Explore hairstyle recommendations tailored to your profile.
+Follow the tutorials provided to recreate the look at home.
+To view trending hairstyles:
+
+Go to the "Trending" section to browse popular hairstyles.
+Save your favorite styles to your profile for easy access later.
+
 Credits:
 
-Acknowledge any collaborators or sources of inspiration.
+Special thanks to the following:
+
+- Jane Doe for design and user experience development
+- John Smith for backend development and API integration
+- Inspiration from top hair stylists and YouTube tutorials for styling content.
 
 ## License
  
