@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Project Title: CPRG306-Assignments
 
-## Getting Started
+Description:
+CPRG306-Assignments is a personal hair styling assistant designed to provide users with personalized hairstyle recommendations and tutorials based on their hair type, face shape, and preferences. Whether you're looking for a fresh cut, styling tips, or ideas for a special occasion, CPRG306-Assignments offers a range of suggestions to help you achieve teh perfect look.
 
-First, run the development server:
+Key Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tailored hairstyle recommendations based on hair type and face shape
+Easy-to-follow tutorials for various styles
+Access to trending hairstyles and looks
+Ability to save favorite hairstyles for future reference
+Personalized product suggestions based on hair care needs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Installation Instructions:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Open a Terminal
+Open a terminal on your computer. On Windows, you can open a terminal by pressing the Windows key and typing "cmd" and pressing Enter.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Clone the repository to your local machine:
+git clone https://github.com/zena-kebede/cprg306-assignments
 
-## Learn More
+3. Navigate to the project directory
+cd cprg306-assignments
 
-To learn more about Next.js, take a look at the following resources:
+4. Install the necessary dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Start the development server
+npm start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+6. Open your browser and go to http://localhost:3000 to start using CPRG306-Assignments.
 
-## Deploy on Vercel
+Usage:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Show how to use your project, with code examples or screenshots.
+Contributing:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you're open to contributions, explain how others can contribute.
+Link to a CONTRIBUTING.md file if you have one.
+Credits:
+
+Acknowledge any collaborators or sources of inspiration.
+
+## License
+ 
+This project is open source and available under the [MIT License](LICENSE).
