@@ -8,8 +8,7 @@ export default function Page() {
         color: "Tan Striped"
     }
 }
-
-return (
+(
     <main className="ml-4">
         <h1 className="text-2xl font-bold"> Week 3 Demo </h1>
         <Dog 
