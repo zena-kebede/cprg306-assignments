@@ -12,8 +12,7 @@ export default function Counter() {
         <div>
             <h1>Counter component</h1>
             <p>Count: {count}</p>
-            <button 
-            onClick="increment"></button>
+            <button onClick={increment} className="bg-blue-500 hover:bg-blue-700 text-write w-20 rounded">Increment</button>
         </div>
-    )
+    );
 }
