@@ -24,6 +24,7 @@ export default function DogForm() {
                 onChange={(event) => handleNameChange(event)}
                 />
             </form>
+            <div className="text-lg">{name}</div>
         
         </div>
     );
