@@ -2,6 +2,21 @@
 
 import { useState } from "react";
 
+export default function NewItem() {
+    //State variables for name, quantity and Category
+    constr [name, setName] = useState("");
+    const [quantity, setQuantity] = useState(1);
+    const [category, setCategory] = useState("Produce");
+
+    //increment and decrement functions for quantity
+    const increment = () => {
+        if (quantity < 20) {
+            setQuantity(quantity + 1);
+        }
+    }
+
+}
+
 export default function Quantity() {
     const [quantity, setQuantity] = useState(1);
 
