@@ -11,6 +11,8 @@ export default function StudentInfo() {
       <Link href="http://localhost:3000/week-4"> Week 4</Link>
       <h1>CPRG 306: Web Development 2 - Assignments </h1>
       <Link href="http://localhost:3000/week-5"> Week 5</Link>
+      <h1>CPRG 306: Web Development 2 - Assignments </h1>
+      <Link href="http://localhost:3000/week-6"> Week 6</Link>
     </div>
   );
 }
