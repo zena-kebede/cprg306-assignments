@@ -44,7 +44,7 @@ export default function NewItem({ onAddItem }) {
 
     return (
         
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-8">
         <div className="flex justify-center items-center space-x-4 p-6 border border-gray-300 rounded-lg w-full max-w-md bg-white shadow-lg">
         <form onSubmit={handleSubmit} className="space-y-4">
             {/*Name fields */}
