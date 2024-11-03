@@ -21,11 +21,22 @@ export default function GroceryItem() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let item = { name, quantity, category };
-        console.log(item)
-        alert(`Name: ${name} Quantity: ${quantity}, Category: ${category}`)
-        
-        //Reset the state variables
+
+        // Generate a unique ID based on current timestamp and a random number
+        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+        // Create the new item object
+        const item = {
+            id,
+            name,
+            quantity,
+            category
+        };
+
+        // Call the onAddItem prop with the new item
+        onAddItem(item);
+
+        // Reset the form fields
         setName("");
         setQuantity(1);
         setCategory("Produce");

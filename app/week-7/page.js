@@ -1,14 +1,25 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import ItemList from './item-list';
 import NewItem from './new-item';
-import ItemsData from './items.json'
+import itemsData from './items.json'
 
 
 const Page = () => {
+    //initialize state with items from items.json
+    const [items, setItems] = useState(itemsData);
+
+    //Event handler to add a new item to the list
+    const handleAddItem = (newItem) => {
+        setItems([...items, newItem]); //add the new item to the existing items array 
+    };
+
     return (
         <main className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Shopping List</h1>
-            <ItemList/>
+            {/* Render NewItem and ItemList components */}
+            <NewItem onAddItem={handleAddItem} /> {/* Pass handleAddItem as onAddItem prop */}
+            <ItemList items={items} /> {/* Pass items state as items prop */}
         </main>
     );
 };

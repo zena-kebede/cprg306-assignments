@@ -2,23 +2,30 @@
 
 import { useState } from "react";
 import Item from './item';
-import items from './items.json';
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   const [sortBy, setSortBy] = useState('name');
 
-  const groupedItems = sortBy === 'group' 
+  // Create a grouped version of items without mutating the prop
+  const groupedItems = sortBy === 'group'
     ? Object.entries(
         items.reduce((acc, item) => {
           // Group items by category
-          if (!acc[item.category]) acc[item.category] = [];
-          acc[item.category].push(item);
+          const category = item.category;
+          if (!acc[category]) acc[category] = [];
+          acc[category] = [...acc[category], item]; // Add item to a new array for immutability
           return acc;
         }, {})
-      ).sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
+      )
+      .map(([category, itemsInCategory]) => [
+        category, 
+        [...itemsInCategory].sort((a, b) => a.name.localeCompare(b.name)) // Sort each category by name
+      ])
+      .sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
     : null;
 
-  const sortedItems = [...items].sort((a,b) => {
+  // Create a sorted version of items without mutating the prop
+  const sortedItems = [...items].sort((a, b) => {
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
     } else if (sortBy === 'category') {
@@ -54,12 +61,12 @@ const ItemList = () => {
       {/* Display grouped or sorted items */}
       {sortBy === 'group' ? (
         <div>
-          {groupedItems.map(([category, itemsInCategory], index) => (
-            <div key={index} className="mb-4">
+          {groupedItems.map(([category, itemsInCategory], categoryIndex) => (
+            <div key={categoryIndex} className="mb-4">
               <h2 className="text-lg font-bold capitalize mb-2">{category}</h2>
               <ul className="list-none p-4">
-                {itemsInCategory.sort((a, b) => a.name.localeCompare(b.name)).map((item, index) => (
-                  <Item key={index} {...item} />
+                {itemsInCategory.map((item, itemIndex) => (
+                  <Item key={itemIndex} {...item} />
                 ))}
               </ul>
             </div>
@@ -67,8 +74,8 @@ const ItemList = () => {
         </div>
       ) : (
         <ul className="list-none p-4">
-          {sortedItems.map((item, index) => (
-            <Item key={index} {...item} />
+          {sortedItems.map((item, itemIndex) => (
+            <Item key={itemIndex} {...item} />
           ))}
         </ul>
       )}
