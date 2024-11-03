@@ -6,23 +6,23 @@ import Item from './item';
 const ItemList = ({ items }) => {
   const [sortBy, setSortBy] = useState('name');
 
-  // Create a grouped version of items without mutating the prop
-  const groupedItems = sortBy === 'group'
-    ? Object.entries(
-        items.reduce((acc, item) => {
-          // Group items by category
-          const category = item.category;
-          if (!acc[category]) acc[category] = [];
-          acc[category] = [...acc[category], item]; // Add item to a new array for immutability
-          return acc;
-        }, {})
-      )
-      .map(([category, itemsInCategory]) => [
-        category, 
-        [...itemsInCategory].sort((a, b) => a.name.localeCompare(b.name)) // Sort each category by name
-      ])
-      .sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
-    : null;
+// Create a grouped version of items without mutating the prop
+const groupedItems = sortBy === 'group'
+  ? Object.entries(
+      items.reduce((acc, item) => {
+        // Standardize category names for consistent grouping
+        const category = item.category.charAt(0).toUpperCase() + item.category.slice(1).toLowerCase();
+        if (!acc[category]) acc[category] = [];
+        acc[category] = [...acc[category], item]; // Add item to a new array for immutability
+        return acc;
+      }, {})
+    )
+    .map(([category, itemsInCategory]) => [
+      category, 
+      [...itemsInCategory].sort((a, b) => a.name.localeCompare(b.name)) // Sort each category by name
+    ])
+    .sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
+  : null;
 
   // Create a sorted version of items without mutating the prop
   const sortedItems = [...items].sort((a, b) => {
