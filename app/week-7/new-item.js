@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function GroceryItem() {
+export default function NewItem({ onAddItem }) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("Produce");
@@ -22,15 +22,15 @@ export default function GroceryItem() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Generate a unique ID based on current timestamp and a random number
-        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        // Capitalize the category name consistently (e.g., Meat, Produce, etc.)
+        const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
 
-        // Create the new item object
+        // Create the new item object with a unique ID and formatted category
         const item = {
-            id,
+            id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`, // Generate a unique ID
             name,
             quantity,
-            category
+            category: formattedCategory // Use the formatted category
         };
 
         // Call the onAddItem prop with the new item
