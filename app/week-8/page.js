@@ -18,7 +18,7 @@ export default function Page() {
 
     const getRandomDog = async (breed) => {
         const response = breed ? // is there a breed?
-        await fetch(`https://dog.ceo/api/breed/${breed}/image/random`) // if there is a breed, then do this line
+        await fetch(`https://dog.ceo/api/breed/${breed}/images/random`) // if there is a breed, then do this line
         : await fetch("https://dog.ceo/api/breeds/image/random"); //otherwise or else, do this line instead.
         const data = await response.json(); 
         const url = data.message; //convert to an object
