@@ -6,6 +6,10 @@ import Item from './item';
 const ItemList = ({ items }) => {
   const [sortBy, setSortBy] = useState('name');
 
+  const handleItemSelect = (itemName) => {
+    console.log("Select item: ", itemName);
+  }
+
 // Create a grouped version of items without mutating the prop
 const groupedItems = sortBy === 'group'
   ? Object.entries(
@@ -66,7 +70,8 @@ const groupedItems = sortBy === 'group'
               <h2 className="text-lg font-bold capitalize mb-2">{category}</h2>
               <ul className="list-none p-4">
                 {itemsInCategory.map((item, itemIndex) => (
-                  <Item key={itemIndex} {...item} />
+                  <Item key={itemIndex} {...item} onSelect={handleItemSelect}
+                  />
                 ))}
               </ul>
             </div>
@@ -75,7 +80,10 @@ const groupedItems = sortBy === 'group'
       ) : (
         <ul className="list-none p-4">
           {sortedItems.map((item, itemIndex) => (
-            <Item key={itemIndex} {...item} />
+            <Item 
+            key={itemIndex} {...item} 
+            onSelect={handleItemSelect}
+            />
           ))}
         </ul>
       )}
