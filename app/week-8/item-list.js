@@ -3,12 +3,8 @@
 import { useState } from "react";
 import Item from './item';
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, onSelect }) => {
   const [sortBy, setSortBy] = useState('name');
-
-  const handleItemSelect = (itemName) => {
-    console.log("Select item: ", itemName);
-  }
 
 // Create a grouped version of items without mutating the prop
 const groupedItems = sortBy === 'group'
@@ -70,7 +66,9 @@ const groupedItems = sortBy === 'group'
               <h2 className="text-lg font-bold capitalize mb-2">{category}</h2>
               <ul className="list-none p-4">
                 {itemsInCategory.map((item, itemIndex) => (
-                  <Item key={itemIndex} {...item} onSelect={handleItemSelect}
+                  <Item key={itemIndex} 
+                  {...item} 
+                  onSelect={() => onSelect(item.name)} // pass the item name to onSelect
                   />
                 ))}
               </ul>
@@ -81,8 +79,8 @@ const groupedItems = sortBy === 'group'
         <ul className="list-none p-4">
           {sortedItems.map((item, itemIndex) => (
             <Item 
-            key={itemIndex} {...item} 
-            onSelect={handleItemSelect}
+            key={itemIndex} {...item}
+            onSelect={() => onSelect(item.name)} //pass the item name to onSelect
             />
           ))}
         </ul>

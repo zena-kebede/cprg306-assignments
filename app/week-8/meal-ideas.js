@@ -3,9 +3,14 @@
 //Step 1: import necessary hooks
 import { useState, useEffect } from "react";
 
+const removeEmojis = (text) => {
+    return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+  };
+
 //Step 3: define the API fetching function
 const fetchMealIdeas = async (ingredient) => {
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+    const realIngredient = removeEmojis(ingredient); //removes emojis from the ingredient name
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${realIngredient}`);
     const data = await response.json();
     return data.meals || []; // this returns a list of meals OR an empty array if none are found.
 }  
@@ -23,7 +28,7 @@ export default function MealIdeas({ ingredient }) {
     //Step 5: useEffect to load meals when the ingredient changes
     useEffect(() => {
         if (ingredient) {
-            loadMealIdeas();
+            fetchMealIdeas(ingredient).then(setMeals);
         }
     }, [ingredient]);
 
@@ -35,7 +40,7 @@ export default function MealIdeas({ ingredient }) {
                 {meals.map((meal) => (
                     <li key={meal.idMeal}>
                         <h3>{meal.strMeal}</h3>
-                        <img src={meal.strMealThumb} alt={meal.StrMeal} style={{ width: "100px", height: "100px"}} />
+                        <img src={meal.strMealThumb} alt={meal.strMeal} style={{ width: "100px", height: "100px"}} />
                     </li>
                 ))}
             </ul>
