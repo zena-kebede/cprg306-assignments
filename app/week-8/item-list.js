@@ -3,26 +3,26 @@
 import { useState } from "react";
 import Item from './item';
 
-const ItemList = ({ items, onSelect }) => {
+const ItemList = ({ items, onItemSelect }) => {
   const [sortBy, setSortBy] = useState('name');
 
-// Create a grouped version of items without mutating the prop
-const groupedItems = sortBy === 'group'
-  ? Object.entries(
-      items.reduce((acc, item) => {
-        // Standardize category names for consistent grouping
-        const category = item.category.charAt(0).toUpperCase() + item.category.slice(1).toLowerCase();
-        if (!acc[category]) acc[category] = [];
-        acc[category] = [...acc[category], item]; // Add item to a new array for immutability
-        return acc;
-      }, {})
-    )
-    .map(([category, itemsInCategory]) => [
-      category, 
-      [...itemsInCategory].sort((a, b) => a.name.localeCompare(b.name)) // Sort each category by name
-    ])
-    .sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
-  : null;
+  // Create a grouped version of items without mutating the prop
+  const groupedItems = sortBy === 'group'
+    ? Object.entries(
+        items.reduce((acc, item) => {
+          // Standardize category names for consistent grouping
+          const category = item.category.charAt(0).toUpperCase() + item.category.slice(1).toLowerCase();
+          if (!acc[category]) acc[category] = [];
+          acc[category] = [...acc[category], item]; // Add item to a new array for immutability
+          return acc;
+        }, {})
+      )
+      .map(([category, itemsInCategory]) => [
+        category, 
+        [...itemsInCategory].sort((a, b) => a.name.localeCompare(b.name)) // Sort each category by name
+      ])
+      .sort((a, b) => a[0].localeCompare(b[0])) // Sort categories alphabetically
+    : null;
 
   // Create a sorted version of items without mutating the prop
   const sortedItems = [...items].sort((a, b) => {
@@ -66,9 +66,10 @@ const groupedItems = sortBy === 'group'
               <h2 className="text-lg font-bold capitalize mb-2">{category}</h2>
               <ul className="list-none p-4">
                 {itemsInCategory.map((item, itemIndex) => (
-                  <Item key={itemIndex} 
-                  {...item} 
-                  onSelect={() => onSelect(item.name)} // pass the item name to onSelect
+                  <Item 
+                    key={itemIndex} 
+                    {...item} 
+                    onSelect={() => onItemSelect(item.name)} // Pass item name to onItemSelect
                   />
                 ))}
               </ul>
@@ -79,8 +80,9 @@ const groupedItems = sortBy === 'group'
         <ul className="list-none p-4">
           {sortedItems.map((item, itemIndex) => (
             <Item 
-            key={itemIndex} {...item}
-            onSelect={() => onSelect(item.name)} //pass the item name to onSelect
+              key={itemIndex} 
+              {...item}
+              onSelect={() => onItemSelect(item.name)} // Pass item name to onItemSelect
             />
           ))}
         </ul>
