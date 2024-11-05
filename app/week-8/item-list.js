@@ -41,6 +41,7 @@ const ItemList = ({ items, onItemSelect }) => {
         <button
           onClick={() => setSortBy('name')}
           className={`px-4 py-2 mr-2 ${sortBy === 'name' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          
         >
           Sort by Name
         </button>
@@ -66,7 +67,7 @@ const ItemList = ({ items, onItemSelect }) => {
               <h2 className="text-lg font-bold capitalize mb-2">{category}</h2>
               <ul className="list-none p-4">
                 {itemsInCategory.map((item, itemIndex) => (
-                  <Item 
+                  <Item
                     key={itemIndex} 
                     {...item} 
                     onSelect={() => onItemSelect(item.name)} // Pass item name to onItemSelect

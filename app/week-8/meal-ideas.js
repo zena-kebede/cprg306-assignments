@@ -37,7 +37,7 @@ const MealIdeas = ({ ingredient }) => {
                                 padding: '8px',
                                 transition: 'background-color 0.3s', // Smooth transition effect
                             }}
-                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e0f7fa'}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#88dc9e'}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                         >
                             <h3>{meal.strMeal}</h3>
