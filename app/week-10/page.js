@@ -25,7 +25,7 @@ export default function Page() {
             <div>
                 {user ? (
                 <div>
-                // Display some of the user's information
+                {/*Display some of the user's information*/}
                 <p>Welcome, {user.displayName}!</p>
                 <button onClick={logout}>Logout</button>
                 </div>
