@@ -12,8 +12,9 @@ do not render the shopping list page. Optional: You can redirect the user to the
 import React, { useState } from 'react';
 import ItemList from './item-list';
 import NewItem from './new-item';
-import itemsData from './items.json';
 import MealIdeas from './meal-ideas';
+import useEffect from 'react';
+import getItems, { addItem } from './shopping-list-service.js'
 
 const Page = () => {
     // Initialize state with items from items.json
